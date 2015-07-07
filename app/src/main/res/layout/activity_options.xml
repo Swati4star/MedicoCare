@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="home.medico.com.medicohome.options" >
+
+<Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/amb"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/green_stroke"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Ambulance" />
+
+    <Button
+        android:id="@+id/med"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="@drawable/green_stroke"
+        android:text="Medicine" />
+
+    <Button
+        android:id="@+id/rem"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="@drawable/green_stroke"
+        android:text="Add\nReminder" />
+
+
+
+</LinearLayout>

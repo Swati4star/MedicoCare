@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="buildorder.Build">
+
+    <item
+        android:id="@+id/action_cart"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_cart"
+        android:title="My Cart"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/action_camera"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_camera"
+        android:title="Upload Prescription"
+        app:showAsAction="always"/>
+
+</menu>

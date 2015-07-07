@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<PreferenceCategory android:title="Notification Settings">
+
+    <CheckBoxPreference android:key="vibrate_pref"
+        android:title="Vibrate"
+        android:summary="Vibrate on notification"
+        android:defaultValue="true" />
+
+    <RingtonePreference android:key="ringtone"
+        android:title="Set Ringtone"
+        android:defaultValue="content://settings/system/notification_sound"
+        android:ringtoneType="all" />
+
+
+</PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,62 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!-- <item name="android:homeAsUpIndicator">@drawable/ic_action_list</item>-->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="colorAccent">#000000</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <!--<item name="android:actionBarStyle">@style/ActionBarStyle</item>-->
+    </style>
+
+    <!-- Application theme. -->
+  <style name="AppTheme2" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+
+
+    </style>
+
+
+    <style name="Theme.UserDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTitleStyle">@style/dialog_title_style</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="dialog_title_style" parent="android:Widget.TextView">
+        <item name="android:background">@color/green</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+
+    <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/settings</item>
+    </style>
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/green</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+
+    <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+
+    <style name="DialogTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+</resources>
