@@ -8,16 +8,19 @@
 		require_once('inc/connection.inc.php');
 		
 		$data = json_decode($json);
-		$address = $data->address;
-		$order = $data->order;
-		$coord1 = $data->coord1;
-		$coord2 = $data->coord2;
-		$deviceID = $data->regId;
-		$userID = $data->userid;
+		
+		$address 	= $data->address;
+		$order 		= $data->order;
+		$coord1 	= $data->coord1;
+		$coord2 	= $data->coord2;
+		$deviceID 	= $data->regId;
+		$userID 	= $data->userid;
+		$prescrip 	= $data->preid;
+		
 		$currentTime = time();
 		$storeIDs = array();
 		
-		$query = "INSERT INTO `order_log` (`user_id`, `user_device`, `order_text`, `order_time`, `coord1`, `coord2`, `address`) VALUES ('$userID', '$deviceID', '$order', '$currentTime', '$coord1', '$coord2','$address')";
+		$query = "INSERT INTO `order_log` (`user_id`, `user_device`, `order_text`, `order_time`, `coord1`, `coord2`, `address`,`prescription`) VALUES ('$userID', '$deviceID', '$order', '$currentTime', '$coord1', '$coord2','$address','$prescrip')";
 		if($query_run = mysqli_query($connection,$query)){
 
 			$query = "SELECT `order_id` FROM `order_log` WHERE `order_time` = '$currentTime'";
@@ -27,16 +30,14 @@
 				}
 			}
 			
-			$registrationIds = array('APA91bGKzgmdRG6MyRIaIP5FDcOVF8m1r5-RpoBR_FHvi0euFXnA19tJ_pbO-HFffqwkyBcOUzuZAz_o2N8l2qw2ILG7focTOa2k6AlJpA5MZioJEli3my6SFOHsbIjrVvxiYDTqRQKf0Zoepa1OsMhmQACAGUBOmg');
-			
 			$query = "SELECT `device_id`,`coord1`,`coord2` FROM `stores`";
 			if($query_run = mysqli_query($connection,$query)){
 				while($query_row = mysqli_fetch_assoc($query_run)){
 					$coord1DB = $query_row['coord1'];
 					$coord2DB = $query_row['coord2'];
 					$deviceIdDB = $query_row['device_id'];
-					if(getDistance($coord1 , $coord2 , $coord1DB , $coord2DB) <= 1000){
-						$storeIDs = array_push($storeIDs,$deviceIdDB);
+					if(getDistance($coord1 , $coord2 , $coord1DB , $coord2DB) <= 5000){
+						array_push($storeIDs,$deviceIdDB);
 					}
 				}
 			}
@@ -45,7 +46,11 @@
 				"address" => $address,
 				"order" => $order
 			);
-			echo sendPushNotification($registrationIds , $order);
+			if(empty($storeIDs)){
+				echo 'No Chemists in your surroundings';
+			} else {
+				echo sendPushNotification($storeIDs , $order);
+			}
 		} else {
 			echo 'Some Error. Try Again';
 		}

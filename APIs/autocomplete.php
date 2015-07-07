@@ -12,6 +12,7 @@
 		$query_run = mysqli_query($connection,$query);
 		while($query_row = mysqli_fetch_assoc($query_run)){
 			$row_array['medicine_name'] = $query_row['generic'];
+			$row_array['prescription_required'] = $query_row['prescription_required'];
 			array_push($return_arr,$row_array);
 		}
 		echo json_encode(array('suggest_medicine'=>$return_arr));

@@ -7,7 +7,7 @@
 		require_once('inc/connection.inc.php');
 		
 		$data = json_decode($json);
-		$chemistID = $data->chemistid;
+		$chemistID = $data->storeid;
 		
 		$query = "SELECT `coord1`,`coord2` FROM `stores` WHERE `code`='$chemistID'";
 		if($query_run = mysqli_query($connection,$query)){
@@ -23,16 +23,17 @@
 					$coord1DB = $query_row['coord1'];
 					$coord2DB = $query_row['coord2'];
 					
-					//if(getDistance($chemistCoordinate1 , $chemistCoordinate2 , $coord1DB , $coord2DB) <= 100000){
+					if(getDistance($chemistCoordinate1 , $chemistCoordinate2 , $coord1DB , $coord2DB) <= 5000){
 						$tempArray = array(
 							'id' 		=> intval($query_row['order_id']),
 							'order' 	=> $query_row['order_text'],
-							'address'	=> $query_row['address']
+							'address'	=> $query_row['address'],
+							'preid'		=> $query_row['prescription']
 						);
 						array_push($ordersArray,$tempArray);
-					//}
+					}
 				}
-				echo json_encode(array('pendingorders' => $ordersArray,JSON_FORCE_OBJECT));
+				echo json_encode(array('pendingorders' => $ordersArray));
 			} else {
 				echo 'Some Error. Try Again';
 			}

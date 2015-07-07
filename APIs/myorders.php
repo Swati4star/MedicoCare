@@ -10,7 +10,7 @@
 		$data = json_decode($json);
 	
 		$userID = $data->userid;
-		$query = "SELECT * FROM order_log A INNER JOIN stores B ON A.chemist_id=B.code WHERE A.user_id='$userID'";
+		$query = "SELECT * FROM order_log A INNER JOIN stores B ON A.chemist_id=B.code WHERE A.user_id='$userID' ORDER BY `order_id` DESC";
 		if($query_run = mysqli_query($connection,$query)){
 			$ordersArray = array();
 			while($query_row = mysqli_fetch_assoc($query_run)){				
