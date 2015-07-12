@@ -1,0 +1,150 @@
+<resources>
+    <string name="app_name">Medicohome</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login_or_signup">LoginOrSignup</string>
+    <string name="title_activity_login">login</string>
+    <string name="title_activity_signup">signup</string>
+    <string name="title_activity_options">Options</string>
+    <string name="title_activity_location">location</string>
+    <string name="title_activity_profile">profile</string>
+    <string name="title_activity_display_med">DisplayMed</string>
+    <string name="title_activity_add_med">AddMed</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Demo Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+    <string name="Remind">Medicohome Reminder</string>
+    <string-array name="medicines">
+        <item>Nexium</item>
+        <item>Humira</item>
+        <item>Crestor</item>
+        <item>Advair Diskus</item>
+        <item>Enbrel</item>
+        <item>Remicade</item>
+        <item>Cymbalta</item>
+        <item>Copaxone</item>
+        <item>Neulasta</item>
+        <item>Lantus Solostar</item>
+        <item>Rituxan</item>
+        <item>Spiriva Handihaler</item>
+        <item>Januvia</item>
+        <item>Atripla</item>
+        <item>Lantus</item>
+        <item>Avastin</item>
+        <item>Lyrica</item>
+        <item>Oxycontin</item>
+        <item>Epogen</item>
+        <item>Celebrex</item>
+        <item>Truvada</item>
+        <item>Diovan</item>
+        <item>Gleevec</item>
+        <item>Herceptin</item>
+        <item>Lucentis</item>
+        <item>Namenda</item>
+        <item>Vyvanse</item>
+        <item>Zetia</item>
+        <item>Levemir</item>
+        <item>Symbicort</item>
+        <item>Sovaldi</item>
+        <item>Novolog Flexpen</item>
+        <item>Novolog</item>
+        <item>Tecfidera</item>
+        <item>Suboxone</item>
+        <item>Humalog</item>
+        <item>Xarelto</item>
+        <item>Seroquel XR</item>
+        <item>Viagra</item>
+        <item>Alimta</item>
+        <item>Victoza 3-Pak</item>
+        <item>Avonex</item>
+        <item>Nasonex</item>
+        <item>Cialis</item>
+        <item>Gilenya</item>
+        <item>Stelara</item>
+        <item>Flovent HFA</item>
+        <item>Prezista</item>
+        <item>Procrit</item>
+        <item>Isentress</item>
+        <item>Janumet</item>
+        <item>Renvela</item>
+        <item>Humalog Kwikpen</item>
+        <item>Orencia</item>
+        <item>Dexilant</item>
+        <item>Vesicare</item>
+        <item>Neupogen</item>
+        <item>Reyataz</item>
+        <item>Lunesta</item>
+        <item>Synthroid</item>
+        <item>Pradaxa</item>
+        <item>Zytiga</item>
+        <item>Benicar</item>
+        <item>Xolair</item>
+        <item>Avonex Pen</item>
+        <item>Vytorin</item>
+        <item>Invega Sustenna</item>
+        <item>Sensipar</item>
+        <item>Xgeva</item>
+        <item>Prevnar 13</item>
+        <item>Evista</item>
+        <item>Aranesp</item>
+        <item>Betaseron</item>
+        <item>Stribild</item>
+        <item>Combivent Respimat</item>
+        <item>Xeloda</item>
+        <item>Afinitor</item>
+        <item>Ventolin HFA</item>
+        <item>Synagis</item>
+        <item>Zyvox</item>
+        <item>Bystolic</item>
+        <item>Sandostatin LAR</item>
+        <item>Complera</item>
+        <item>Benicar HCT</item>
+        <item>Treanda</item>
+        <item>Gardasil</item>
+        <item>Zostavax</item>
+        <item>Pristiq</item>
+        <item>Erbitux</item>
+        <item>Focalin XR</item>
+        <item>Tarceva</item>
+        <item>Cubicin</item>
+        <item>Strattera</item>
+        <item>Latuda</item>
+        <item>Velcade</item>
+        <item>Viread</item>
+        <item>Welchol</item>
+        <item>Nuvaring</item>
+        <item>Sprycel</item>
+    </string-array>
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Everyday</item>
+    </string-array>
+    <string name="title_activity_build">Build</string>
+    <string name="title_activity_confirm_add">ConfirmAdd</string>
+    <string name="title_activity_my_cart">MyCart</string>
+    <string name="title_activity_message_sent">MessageSent</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_show_message">ShowMessage</string>
+    <string name="title_activity_refer_us">ReferUs</string>
+</resources>

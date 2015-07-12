@@ -1,0 +1,276 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.medicohome.AddMedicine"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+         >
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView1"
+            android:textSize="15sp"
+            android:textColor="#1f9c62"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medicine Name : " />
+
+        <AutoCompleteTextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/medname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name" >
+
+            <requestFocus />
+        </AutoCompleteTextView>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:textColor="#1f9c62"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Days : " />
+
+        <RadioButton
+            android:id="@+id/all"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Everyday" />
+
+        <RadioButton
+
+            android:id="@+id/some"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specific Days" />
+        <TextView
+            android:id="@+id/selecteddays"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:textColor="#1f9c62"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dosage :" />
+
+
+        <NumberPicker
+            android:id="@+id/numberPicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:textColor="#1f9c62"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Time :" />
+
+        <TimePicker
+            android:background="#ffffff"
+            android:id="@+id/timePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:textColor="#1f9c62"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Color of Medicine  :" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/dblue"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/dblue" />
+
+            <Button
+                android:id="@+id/purple"
+                android:background="@drawable/purple"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/green"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/green"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/orange"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/orange"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/blue"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/blue" />
+
+            <Button
+                android:id="@+id/red"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/red"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/white"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/white"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/maroon"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/maroon"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/orange2"
+                android:background="@drawable/orange2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/dgreen"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/dgreen"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/purple2"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/purple2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/grey"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/grey"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:textColor="#1f9c62"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shape of Medicine :" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/circle"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_circle"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/capsule"
+                android:background="@drawable/shape_capsule"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/rectangle"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_rectangle"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:textColor="#1f9c62"
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extra message :" />
+
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:textSize="13sp"
+            android:id="@+id/extramessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="For example : after lunch.." />
+
+    </LinearLayout>
+
+
+</ScrollView>

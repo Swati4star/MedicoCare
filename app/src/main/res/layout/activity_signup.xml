@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/parent"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="home.medico.com.medicohome.signup" >
+    <TextView
+        android:id="@+id/error"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:ems="10"
+            android:hint="First Name"
+            android:layout_weight="1"
+            android:inputType="textPersonName" >
+            <requestFocus />
+        </EditText>
+
+
+        <EditText
+            android:id="@+id/last"
+            android:hint="Last Name"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+    <EditText
+        android:layout_marginTop="26dp"
+        android:id="@+id/emailid"
+        android:layout_width="fill_parent"
+        android:hint="Email Id"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress" >
+
+
+
+
+    </EditText>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:src="@drawable/india" />
+
+        <EditText
+            android:id="@+id/number"
+            android:layout_marginTop="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone number"
+            android:inputType="phone" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/password"
+        android:layout_marginTop="26dp"
+        android:layout_width="fill_parent"
+        android:hint="Password"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/confirmpassword"
+        android:layout_marginTop="26dp"
+        android:layout_width="fill_parent"
+        android:hint="Confirm Password"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+
+    <Button
+        android:id="@+id/next"
+        android:textColor="#ffffff"
+        android:background="#1f9c62"
+        android:layout_marginTop="26dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+
+</LinearLayout>
