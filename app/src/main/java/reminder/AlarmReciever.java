@@ -22,7 +22,7 @@ public class AlarmReciever extends BroadcastReceiver {
         NotificationManager mNM;
         mNM = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         // Set the icon, scrolling text and timestamp
-        Notification notification = new Notification(R.drawable.logo, "Test Alarm",
+        Notification notification = new Notification(R.drawable.blue_selected, "Test Alarm",
                 System.currentTimeMillis());
 
         // The PendingIntent to launch our activity if the user selects this notification

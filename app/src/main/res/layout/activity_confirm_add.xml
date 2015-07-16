@@ -78,6 +78,16 @@
                 android:layout_height="wrap_content"
                 android:hint="City"
             />
+
+            <EditText
+
+                android:id="@+id/in"
+                android:singleLine="true"
+                android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Any Extra Instructions....(optional)"
+                />
         </LinearLayout>
 
         <LinearLayout

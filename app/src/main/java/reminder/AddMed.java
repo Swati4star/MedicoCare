@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +37,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
     int DAYS = 0;
     Button blue,dblue,dgreen,green,maroon,orange,purple,red,white,orange2,purple2,grey;
     int Blue,Dblue,Dgreen,Green,Maroon,Orange,Purple,Red,White,Orange2,Purple2,Grey;
-    AutoCompleteTextView medname;
+    EditText medname;
     RadioButton all,selected;
     TextView displaydays;
     EditText message;
@@ -51,9 +54,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
 
 
-
-
-
         getSupportActionBar().setTitle("Add New Medicine");
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker1);
@@ -61,7 +61,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         numberPicker.setMinValue(0);
         numberPicker.setWrapSelectorWheel(true);
         timep = (TimePicker) findViewById(R.id.timePicker1);
-        medname = (AutoCompleteTextView) findViewById(R.id.medname);
+        medname = (EditText) findViewById(R.id.medname);
         message = (EditText) findViewById(R.id.extramessage);
         Blue=Dblue=Dgreen=Green=Maroon=Orange=Purple=Red=White=Orange2=Purple2=Grey=0;
         blue = (Button) findViewById(R.id.blue);
@@ -93,8 +93,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         selected = (RadioButton) findViewById(R.id.some);
         displaydays = (TextView) findViewById(R.id.selecteddays);
 
-        //Button white = (Button) findViewById(R.id.white);
-        //((GradientDrawable)white.getBackground()).setColor(Color.parseColor("#0971c3"));
 
         all.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -112,7 +110,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // TODO Auto-generated method stub
-                if(selected.isChecked()){
+                if (selected.isChecked()) {
                     all.setChecked(false);
                     Displaydays d = new Displaydays(AddMed.this);
                     d.show();
@@ -120,10 +118,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
                 }
             }
         });
-        medname = (AutoCompleteTextView) findViewById(R.id.medname);
-        String[] mednames = getResources().getStringArray(R.array.medicines);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,mednames);
-        medname.setAdapter(adapter);
+
 
 
 
@@ -150,17 +145,13 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_med, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+           int id = item.getItemId();
 
         if (id == R.id.yes) {
 
@@ -169,25 +160,61 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
             mediname = medname.getText().toString();
             days = displaydays.getText().toString();
             time = timep.getCurrentHour().toString() + " : " + timep.getCurrentMinute().toString();
-            if(mediname==null)
+            Log.e("fdbssfbv",""+mediname+" "+dosage+" "+days+" "+time);
+            if(mediname.equals(""))
                 Toast.makeText(this, "Add Medicine Name", Toast.LENGTH_SHORT).show();
+            else if(days.equals(""))
+                Toast.makeText(this, "Add Days", Toast.LENGTH_SHORT).show();
+            else if(dosage==0)
+                Toast.makeText(this, "Add Dosage", Toast.LENGTH_SHORT).show();
             else {
                 DBhelp d = new DBhelp(this);
                 d.open();
-                if(ids==null)
-                d.createNote(mediname, days, "" + dosage, time, " COLOR", extramessage);
-                else
-                d.updateNote(Long.parseLong(ids),mediname, days, "" + dosage, time, " COLOR", extramessage);
-                Toast.makeText(this, "Medicine added", Toast.LENGTH_SHORT).show();
+                String color=" ";
+                if(Blue==1)
+                    color="Blue";
+                if(Dblue==1)
+                    color="Dblue";
+                if(Dgreen==1)
+                    color="Dgeen";
+                if(Green==1)
+                    color="Green";
+                if(Maroon==1)
+                    color="Maroon";
+                if(Orange==1)
+                    color="Orange";
+                if(Orange2==1)
+                    color="Orange2";
+                if(Purple==1)
+                    color="Purple";
+                if(Purple2==1)
+                    color="Purple2";
+                if(Red==1)
+                    color="Red";
+                if(Grey==1)
+                    color="Grey";
+                if(White==1)
+                    color="White";
+                Long i;
+
+                if (ids == null) {
+                    i =  d.createNote(mediname, days, "" + dosage, time, color, extramessage);
+                }else {
+                    i = Long.parseLong(ids);
+                    d.updateNote(Long.parseLong(ids), mediname, days, "" + dosage, time, color, extramessage);
+                }Toast.makeText(this, "Medicine added", Toast.LENGTH_SHORT).show();
+
+                Long t = System.currentTimeMillis();
+                Calendar c = Calendar.getInstance();
+                c.setTimeInMillis(t);
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+                AlarmService a = new AlarmService(getApplicationContext(),i);
+                c.set(mYear, mMonth, mDay, timep.getCurrentHour(), timep.getCurrentMinute());
+                a.startAlarm(c,days);
                 finish();
             }
-
-
-            AlarmService a = new AlarmService(getApplicationContext());
-            Calendar c = Calendar.getInstance();
-            c.set(2015,7,16,timep.getCurrentHour(),timep.getCurrentMinute());
-            a.startAlarm();
-
             return true;
         }
         else

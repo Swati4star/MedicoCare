@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Medicine Name : " />
 
-        <AutoCompleteTextView
+        <EditText
             android:layout_marginTop="20dp"
             android:id="@+id/medname"
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:hint="Name" >
 
             <requestFocus />
-        </AutoCompleteTextView>
+        </EditText>
         <TextView
             android:id="@+id/textView2"
             android:layout_marginTop="20dp"
@@ -214,7 +214,7 @@
                 />
 
         </LinearLayout>
-        <TextView
+    <!--    <TextView
             android:textColor="#1f9c62"
             android:layout_marginTop="20dp"
             android:textSize="13sp"
@@ -252,7 +252,7 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-
+-->
         <TextView
             android:textColor="#1f9c62"
             android:layout_marginTop="20dp"

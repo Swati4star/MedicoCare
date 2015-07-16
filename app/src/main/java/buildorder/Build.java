@@ -189,9 +189,6 @@ public class Build extends AppCompatActivity {
                 medname = (AutoCompleteTextView) findViewById(R.id.medname);
 
         String[] mednames = getResources().getStringArray(R.array.medicines);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,mednames);
-        // medname.setAdapter(adapter);
-        //new DownloadWebPageTask().execute();
 
         medname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -422,11 +419,7 @@ public class Build extends AppCompatActivity {
             }
         }
 
-        if(id == R.id.action_camera)
-        {
-            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-            startActivity(intent);
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -551,8 +544,6 @@ public class Build extends AppCompatActivity {
                         valid=true;
                         if(flags.get(arg2).toString().equals("1"))
                             preupload=true;
-                        Toast.makeText(getBaseContext(), list.get(arg2).toString(),
-                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -593,7 +584,7 @@ public class Build extends AppCompatActivity {
     public void uploadImage() {
         // When Image is selected from Gallery
         if (imgPath != null && !imgPath.isEmpty()) {
-            prgDialog.setMessage("Converting Image to Binary Data");
+            prgDialog.setMessage("Uploading Prescription");
             prgDialog.show();
             // Convert image to String using Base64
             encodeImagetoString();
@@ -632,7 +623,7 @@ public class Build extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String msg) {
-                prgDialog.setMessage("Calling Upload");
+                prgDialog.setMessage("Uploading...");
                 // Put converted Image string into Async Http Post param
                 params.put("image", encodedString);
                 // Trigger Image upload

@@ -59,8 +59,8 @@ public class ConfirmAdd extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     static final String[] sideitems = new String[] { "Reminder","My Orders","Refer and Earn" , "Feedback","Rate us","Log Out" };	//items on navigation drawer
     String[] medinames = new String[100];
-    EditText name,flat,street,locality,city;
-    String Name,Flat,Street,Locality,City;
+    EditText name,flat,street,locality,city,ins;
+    String Name,Flat,Street,Locality,City,Ins;
     ArrayList<Integer> qty;
     ArrayList<String> meci;
     Button  text,next;
@@ -133,6 +133,7 @@ public class ConfirmAdd extends AppCompatActivity {
         flat = (EditText) findViewById(R.id.b);
         street = (EditText) findViewById(R.id.c);
         locality = (EditText) findViewById(R.id.d);
+        ins = (EditText) findViewById(R.id.in);
         city = (EditText) findViewById(R.id.e);
         next.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -141,6 +142,7 @@ public class ConfirmAdd extends AppCompatActivity {
         Flat = flat.getText().toString();
         Street = street.getText().toString();
         Locality = locality.getText().toString();
+        Ins = ins.getText().toString();
         City = city.getText().toString();
         address = Name + " \n"+Flat+"\n" + Street+"\n"+Locality+"\n"+City;
         if(Name.matches("")||Flat.matches("")||Street.matches("")||Locality.matches("")||City.matches(""))
@@ -289,8 +291,8 @@ public class ConfirmAdd extends AppCompatActivity {
                     s = s + meci.get(i);
                 }
                 json.put("order",s);
-                json.put("address",""+address);
-                Log.e("gssegs", s + " \n" + address+"\n"+latitude+"\n"+longitude);
+                json.put("address",""+address+"\n"+Ins);
+                Log.e("gssegs", s + " \n" + address+"\n"+latitude+"\n"+longitude+"\n");
                 JSONArray postjson = new JSONArray();
                 postjson.put(json);
 
@@ -350,8 +352,6 @@ public class ConfirmAdd extends AppCompatActivity {
 
                 Intent i = new Intent(ConfirmAdd.this, ShowMessage.class);
                 startActivity(i);
-
-                Toast.makeText(ConfirmAdd.this, text, Toast.LENGTH_LONG).show();
             }
         }
     }
