@@ -322,6 +322,10 @@ public class LoginOrSignup extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             else
                 Toast.makeText(LoginOrSignup.this, text, Toast.LENGTH_LONG).show();
         }

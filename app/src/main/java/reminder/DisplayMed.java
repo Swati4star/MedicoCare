@@ -2,14 +2,21 @@ package reminder;
 
 import android.app.Activity;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.graphics.Color;
+=======
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
+=======
+import android.widget.TextView;
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
 import home.medico.com.medicohome.R;
 
@@ -30,6 +37,7 @@ public class DisplayMed extends AppCompatActivity {
         TextView t4 = (TextView) findViewById(R.id.medmsg);
         t.setText(i.getStringExtra(DBhelp.KEY_NAME) + " " );
         t1.setText(i.getStringExtra(DBhelp.KEY_DAYS) + " ");
+<<<<<<< HEAD
         t2.setText("Dosage : " + i.getStringExtra(DBhelp.KEY_DOSAGE) + " ");
         t3.setText("Take at : " + i.getStringExtra(DBhelp.KEY_TIME) + " ");
         t4.setText(i.getStringExtra(DBhelp.KEY_MESSAGE) + " ");
@@ -67,6 +75,13 @@ public class DisplayMed extends AppCompatActivity {
 
 
         setTitle(" ");
+=======
+        t2.setText(i.getStringExtra(DBhelp.KEY_DOSAGE) + " ");
+        t3.setText(i.getStringExtra(DBhelp.KEY_TIME) + " ");
+        t4.setText(i.getStringExtra(DBhelp.KEY_MESSAGE) + " ");
+
+        getSupportActionBar().setTitle("Medicine");
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
     }
 

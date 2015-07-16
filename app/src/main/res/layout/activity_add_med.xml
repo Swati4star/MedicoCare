@@ -23,7 +23,11 @@
             android:layout_height="wrap_content"
             android:text="Medicine Name : " />
 
+<<<<<<< HEAD
         <EditText
+=======
+        <AutoCompleteTextView
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             android:layout_marginTop="20dp"
             android:id="@+id/medname"
             android:layout_width="match_parent"
@@ -32,7 +36,11 @@
             android:hint="Name" >
 
             <requestFocus />
+<<<<<<< HEAD
         </EditText>
+=======
+        </AutoCompleteTextView>
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         <TextView
             android:id="@+id/textView2"
             android:layout_marginTop="20dp"
@@ -214,7 +222,11 @@
                 />
 
         </LinearLayout>
+<<<<<<< HEAD
     <!--    <TextView
+=======
+        <TextView
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             android:textColor="#1f9c62"
             android:layout_marginTop="20dp"
             android:textSize="13sp"
@@ -252,7 +264,11 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
+<<<<<<< HEAD
 -->
+=======
+
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         <TextView
             android:textColor="#1f9c62"
             android:layout_marginTop="20dp"

@@ -11,4 +11,14 @@
         app:showAsAction="always"/>
 
 
+<<<<<<< HEAD
+=======
+    <item
+        android:id="@+id/action_camera"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_camera"
+        android:title="Upload Prescription"
+        app:showAsAction="always"/>
+
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 </menu>

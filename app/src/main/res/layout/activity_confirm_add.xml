@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:hint="City"
             />
+<<<<<<< HEAD
 
             <EditText
 
@@ -88,6 +89,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Any Extra Instructions....(optional)"
                 />
+=======
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         </LinearLayout>
 
         <LinearLayout

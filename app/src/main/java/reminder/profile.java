@@ -15,8 +15,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+<<<<<<< HEAD
 import java.util.Calendar;
 
+=======
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 import home.medico.com.medicohome.R;
 
 
@@ -91,9 +94,12 @@ public class profile extends ListActivity {
                 break;
 
             case R.id.menu_delete:
+<<<<<<< HEAD
                 long id = info.id;
                 AlarmService a = new AlarmService(getApplicationContext(),id);
                 a.cancel(id);
+=======
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
                 DBhelp d = new DBhelp(profile.this);
                 d.open();
                 d.deleteNote(info.id);

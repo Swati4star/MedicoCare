@@ -109,8 +109,12 @@
 
         <activity
             android:name="reminder.DisplayMed"
+<<<<<<< HEAD
             android:label="@string/title_activity_display_med"
             android:theme="@style/Theme.AppCompat.Light.Dialog" >
+=======
+            android:label="@string/title_activity_display_med" >
+>>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         </activity>
         <activity
             android:name="reminder.AddMed"
