@@ -4,24 +4,12 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
 import android.util.Log;
-=======
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
-
 import java.util.Calendar;
 
-/**
-<<<<<<< HEAD
- * Created by Swati garg on 05-07-2015.
-=======
- * Created by kamlesh kumar garg on 05-07-2015.
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
- */
 public class AlarmService {
     private Context context;
     private PendingIntent mAlarmSender;
-<<<<<<< HEAD
     int m;
     public AlarmService(Context context,long id) {
         this.context = context;
@@ -82,24 +70,19 @@ public class AlarmService {
        // mAlarmPendingIntent = PendingIntent.getActivity(this, requestCode, intent, flags);
         return mAlarmSender;
     }
-    public void  cancel(long id){
-        m=(int)id;
-        m=m*100;
-        int i=0;
-        while(i<100) {
+    public void  cancel(long id) {
+        m = (int) id;
+        m = m * 100;
+        int i = 0;
+        while (i < 100) {
 
-            m=m+i;
+            m = m + i;
             mAlarmSender = PendingIntent.getBroadcast(context, m, new Intent(context, AlarmReciever.class), 0);
             AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             am.cancel(mAlarmSender);
             i++;
         }
-=======
-    public AlarmService(Context context) {
-        this.context = context;
-        mAlarmSender = PendingIntent.getBroadcast(context, 0, new Intent(context, AlarmReciever.class), 0);
     }
-
     public void startAlarm(){
         //Set the alarm to 10 seconds from now
         Calendar c = Calendar.getInstance();
@@ -110,7 +93,5 @@ public class AlarmService {
         am.set(AlarmManager.RTC_WAKEUP, firstTime, mAlarmSender);
 
        // mAlarmPendingIntent = PendingIntent.getActivity(this, requestCode, intent, flags);
-//this.getAlarmManager().cancel(mAlarmPendingIntent);
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
     }
 }

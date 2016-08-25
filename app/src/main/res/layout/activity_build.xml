@@ -108,49 +108,38 @@
 
 
                 </LinearLayout>
-<<<<<<< HEAD
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_height="wrap_content">
-=======
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/green"
                     android:text="take picture"
-<<<<<<< HEAD
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:id="@+id/cam"/>
-=======
                     android:id="@+id/cam"/>
                 <ImageView
                     android:id="@+id/imgView"
                     android:layout_width="50dp"
                     android:layout_height="50dp">
                 </ImageView>
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/green"
-<<<<<<< HEAD
                     android:layout_marginLeft="10dp"
                     android:textColor="#ffffff"
                     android:text="upload"
                     android:id="@+id/up"/>
                 </LinearLayout>
-=======
                     android:text="upload"
                     android:id="@+id/up"/>
-
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
-
 
                 <Button
                     android:layout_width="wrap_content"

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.IntentFilter;
-<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,12 +11,10 @@ import android.preference.PreferenceManager;
 import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-=======
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,11 +41,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
     int DAYS = 0;
     Button blue,dblue,dgreen,green,maroon,orange,purple,red,white,orange2,purple2,grey;
     int Blue,Dblue,Dgreen,Green,Maroon,Orange,Purple,Red,White,Orange2,Purple2,Grey;
-<<<<<<< HEAD
-    EditText medname;
-=======
     AutoCompleteTextView medname;
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
     RadioButton all,selected;
     TextView displaydays;
     EditText message;
@@ -63,14 +56,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_med);
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         getSupportActionBar().setTitle("Add New Medicine");
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         numberPicker = (NumberPicker) findViewById(R.id.numberPicker1);
@@ -78,11 +63,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         numberPicker.setMinValue(0);
         numberPicker.setWrapSelectorWheel(true);
         timep = (TimePicker) findViewById(R.id.timePicker1);
-<<<<<<< HEAD
-        medname = (EditText) findViewById(R.id.medname);
-=======
         medname = (AutoCompleteTextView) findViewById(R.id.medname);
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         message = (EditText) findViewById(R.id.extramessage);
         Blue=Dblue=Dgreen=Green=Maroon=Orange=Purple=Red=White=Orange2=Purple2=Grey=0;
         blue = (Button) findViewById(R.id.blue);
@@ -114,11 +95,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
         selected = (RadioButton) findViewById(R.id.some);
         displaydays = (TextView) findViewById(R.id.selecteddays);
 
-<<<<<<< HEAD
-=======
-        //Button white = (Button) findViewById(R.id.white);
-        //((GradientDrawable)white.getBackground()).setColor(Color.parseColor("#0971c3"));
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
         all.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -136,11 +112,7 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // TODO Auto-generated method stub
-<<<<<<< HEAD
-                if (selected.isChecked()) {
-=======
                 if(selected.isChecked()){
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
                     all.setChecked(false);
                     Displaydays d = new Displaydays(AddMed.this);
                     d.show();
@@ -148,14 +120,10 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
                 }
             }
         });
-<<<<<<< HEAD
-
-=======
         medname = (AutoCompleteTextView) findViewById(R.id.medname);
         String[] mednames = getResources().getStringArray(R.array.medicines);
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,mednames);
         medname.setAdapter(adapter);
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
 
 
@@ -182,24 +150,13 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-<<<<<<< HEAD
-=======
-        // Inflate the menu; this adds items to the action bar if it is present.
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
         getMenuInflater().inflate(R.menu.menu_add_med, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-<<<<<<< HEAD
            int id = item.getItemId();
-=======
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
         if (id == R.id.yes) {
 
@@ -208,7 +165,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
             mediname = medname.getText().toString();
             days = displaydays.getText().toString();
             time = timep.getCurrentHour().toString() + " : " + timep.getCurrentMinute().toString();
-<<<<<<< HEAD
             Log.e("fdbssfbv",""+mediname+" "+dosage+" "+days+" "+time);
             if(mediname.equals(""))
                 Toast.makeText(this, "Add Medicine Name", Toast.LENGTH_SHORT).show();
@@ -264,7 +220,6 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
                 a.startAlarm(c,days);
                 finish();
             }
-=======
             if(mediname==null)
                 Toast.makeText(this, "Add Medicine Name", Toast.LENGTH_SHORT).show();
             else {
@@ -279,12 +234,11 @@ public class AddMed extends AppCompatActivity implements Displaydays.EditNameDia
             }
 
 
-            AlarmService a = new AlarmService(getApplicationContext());
+            AlarmService a = new AlarmService(getApplicationContext(),0);
             Calendar c = Calendar.getInstance();
             c.set(2015,7,16,timep.getCurrentHour(),timep.getCurrentMinute());
             a.startAlarm();
 
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             return true;
         }
         else

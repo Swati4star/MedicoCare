@@ -189,12 +189,6 @@ public class Build extends AppCompatActivity {
                 medname = (AutoCompleteTextView) findViewById(R.id.medname);
 
         String[] mednames = getResources().getStringArray(R.array.medicines);
-<<<<<<< HEAD
-=======
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,mednames);
-        // medname.setAdapter(adapter);
-        //new DownloadWebPageTask().execute();
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
 
         medname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -424,17 +418,7 @@ public class Build extends AppCompatActivity {
                 startActivity(i);
             }
         }
-
-<<<<<<< HEAD
-
-=======
-        if(id == R.id.action_camera)
-        {
-            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-            startActivity(intent);
-        }
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
-        return super.onOptionsItemSelected(item);
+       return super.onOptionsItemSelected(item);
     }
 
     class DownloadWebPageTask extends AsyncTask<String, Void, String> {
@@ -558,11 +542,6 @@ public class Build extends AppCompatActivity {
                         valid=true;
                         if(flags.get(arg2).toString().equals("1"))
                             preupload=true;
-<<<<<<< HEAD
-=======
-                        Toast.makeText(getBaseContext(), list.get(arg2).toString(),
-                                Toast.LENGTH_SHORT).show();
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
                     }
                 });
 
@@ -603,11 +582,7 @@ public class Build extends AppCompatActivity {
     public void uploadImage() {
         // When Image is selected from Gallery
         if (imgPath != null && !imgPath.isEmpty()) {
-<<<<<<< HEAD
             prgDialog.setMessage("Uploading Prescription");
-=======
-            prgDialog.setMessage("Converting Image to Binary Data");
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             prgDialog.show();
             // Convert image to String using Base64
             encodeImagetoString();
@@ -646,11 +621,7 @@ public class Build extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String msg) {
-<<<<<<< HEAD
                 prgDialog.setMessage("Uploading...");
-=======
-                prgDialog.setMessage("Calling Upload");
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
                 // Put converted Image string into Async Http Post param
                 params.put("image", encodedString);
                 // Trigger Image upload

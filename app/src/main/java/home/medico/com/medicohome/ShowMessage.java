@@ -152,8 +152,6 @@ call.setOnClickListener(new View.OnClickListener() {
             String newMessage = intent.getExtras().getString(CommonUtilities.EXTRA_MESSAGE);
             // Waking up mobile if it is sleeping
             WakeLocker.acquire(getApplicationContext());
-<<<<<<< HEAD
-=======
             /**
              * Take appropriate action on this message
              * depending upon your app requirement
@@ -164,7 +162,6 @@ call.setOnClickListener(new View.OnClickListener() {
             // Releasing wake lock
             Log.e("new message","New Message: order set " + newMessage);
             Toast.makeText(ShowMessage.this,"New Message: order set " + newMessage,Toast.LENGTH_LONG).show();
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
             WakeLocker.release();
         }
     };

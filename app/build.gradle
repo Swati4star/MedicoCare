@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "home.medico.com.medicohome"
@@ -27,5 +27,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile files('libs/gcm.jar')
     compile 'com.loopj.android:android-async-http:1.4.7'
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
 }
 

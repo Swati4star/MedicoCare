@@ -43,16 +43,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name of medicine" />
-
-<<<<<<< HEAD
-    <Button
+  <Button
         android:id="@+id/col"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp" />
-=======
->>>>>>> 8c13fe976855a2811ca66d9ee032ecce5b2c5a7c
-
 </LinearLayout>
