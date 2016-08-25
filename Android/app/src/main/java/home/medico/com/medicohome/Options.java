@@ -1,18 +1,18 @@
 package home.medico.com.medicohome;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -28,11 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Options extends AppCompatActivity {
+public class Options extends AppCompatActivity implements Constants {
 
-    Button med,rem;
+    Button med, rem;
     Button amb;
-   @Override
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
@@ -55,7 +56,7 @@ public class Options extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-               Intent i = new Intent(Options.this, reminder.profile.class);
+                Intent i = new Intent(Options.this, reminder.profile.class);
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 startActivity(i);
 
@@ -74,7 +75,7 @@ public class Options extends AppCompatActivity {
 
             }
         });
-       amb.setVisibility(View.GONE);
+        amb.setVisibility(View.GONE);
         getSupportActionBar().setTitle("MedicoHome");
     }
 
@@ -98,8 +99,6 @@ public class Options extends AppCompatActivity {
 
         super.onDestroy();
     }
-
-
 
 
     @Override
@@ -132,13 +131,10 @@ public class Options extends AppCompatActivity {
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://api.medicohome.com/signup.php");
+            HttpPost httppost = new HttpPost(apilink + "/signup.php");
             JSONObject json = new JSONObject();
 
             try {
-                // JSON data:
-
-
                 json.put("name", "yolo");
 
                 JSONArray postjson = new JSONArray();

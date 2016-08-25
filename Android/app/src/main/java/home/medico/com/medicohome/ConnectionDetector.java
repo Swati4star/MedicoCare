@@ -1,7 +1,7 @@
 package home.medico.com.medicohome;
 
 /**
- * Created by kamlesh kumar garg on 13-06-2015.
+ * Created by swati garg on 13-06-2015.
  */
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -1,6 +1,7 @@
 package buildorder;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,9 +17,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.app.AlertDialog;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,13 +27,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -54,45 +59,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import home.medico.com.medicohome.ConfirmAdd;
+import home.medico.com.medicohome.Constants;
 import home.medico.com.medicohome.LoginOrSignup;
 import home.medico.com.medicohome.R;
 import home.medico.com.medicohome.ShowMessage;
 import reminder.profile;
 
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-public class Build extends AppCompatActivity {
+public class Build extends AppCompatActivity implements Constants {
 
     //NumberPicker numberPicker;
 
     ProgressDialog prgDialog;
     String encodedString;
     Boolean preupload;
-    String preid="";
+    String preid = "";
     RequestParams params = new RequestParams();
-    String imgPath, fileName;
+    String imgPath;
     Bitmap bitmap;
     private static int RESULT_LOAD_IMG = 1;
-    public static boolean valid=false;
+    public static boolean valid = false;
     AutoCompleteTextView medname;
-    TextView t1,t2,amount;
-    Button plus,minus;
-    InputStream is=null;
-    String result=null;
-    String line=null;
-    String nameyet,latitude,longitude;
-    Button next,addmed;
+    TextView t1, t2, amount;
+    Button plus, minus;
+    String nameyet, latitude, longitude;
+    Button next, addmed;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    static final String[] sideitems = new String[] {  "Reminder","My Orders","Share" ,"Feedback", "Rate us","Log Out" };	//items on navigation drawer
-    public static String name,emails;
-    Button pic,up;
+    static final String[] sideitems = new String[]{"Reminder", "My Orders", "Share", "Feedback", "Rate us", "Log Out"};    //items on navigation drawer
+    public static String name, emails;
+    Button pic, up;
     List<String> list;
     List<String> flags;
     Integer[] imageId = {
@@ -104,13 +100,11 @@ public class Build extends AppCompatActivity {
             R.drawable.pill,
             R.drawable.pill};
 
-     String[] medinames = new String[100];
-    ArrayList<String> mec = new ArrayList<String >();
+    String[] medinames = new String[100];
+    ArrayList<String> mec = new ArrayList<String>();
     ArrayList<Integer> qty;
     Button add;
     int in;
-
-
 
 
     @Override
@@ -120,7 +114,7 @@ public class Build extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Raleway-Regular.ttf");
 
-        preupload =false;
+        preupload = false;
         prgDialog = new ProgressDialog(this);
         prgDialog.setCancelable(false);
         Intent i = getIntent();
@@ -139,7 +133,7 @@ public class Build extends AppCompatActivity {
         t1.setTypeface(custom_font);
         t2.setTypeface(custom_font);
 
-        in=0;
+        in = 0;
 
         pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,31 +156,29 @@ public class Build extends AppCompatActivity {
         addmed.setTypeface(custom_font);
 
 
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int x = Integer.parseInt(amount.getText().toString());
+                x++;
+                amount.setText(Integer.toString(x));
 
+            }
 
-    plus.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        int x = Integer.parseInt(amount.getText().toString());
-        x++;
-        amount.setText(Integer.toString(x));
-
-    }
-
-});
+        });
 
 
         minus.setOnClickListener(new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View view) {
-                                         int x = Integer.parseInt(amount.getText().toString());
-                                         x--;
-                                         if(x>0)
-                                         amount.setText(Integer.toString(x));
+            @Override
+            public void onClick(View view) {
+                int x = Integer.parseInt(amount.getText().toString());
+                x--;
+                if (x > 0)
+                    amount.setText(Integer.toString(x));
 
-                                     }
-                                 });
-                medname = (AutoCompleteTextView) findViewById(R.id.medname);
+            }
+        });
+        medname = (AutoCompleteTextView) findViewById(R.id.medname);
 
         String[] mednames = getResources().getStringArray(R.array.medicines);
 
@@ -210,16 +202,15 @@ public class Build extends AppCompatActivity {
         });
 
 
-
         next = (Button) findViewById(R.id.next);
         next.setTypeface(custom_font);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(preupload && preid.equals("")){
-                    Toast.makeText(Build.this,"You need to upload Prescription",Toast.LENGTH_SHORT).show();
+                if (preupload && preid.equals("")) {
+                    Toast.makeText(Build.this, "You need to upload Prescription", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
 
                     Intent i = new Intent(Build.this, ConfirmAdd.class);
                     overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
@@ -236,26 +227,20 @@ public class Build extends AppCompatActivity {
         });
 
 
-
         add = (Button) findViewById(R.id.add);
         add.setTypeface(custom_font);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(medname.getText().toString().matches(""))
-                {
-                    Toast.makeText(Build.this,"Enter medicine name",Toast.LENGTH_SHORT).show();
-                }
-                else if(valid==false)
-                {
-                    Toast.makeText(Build.this,"Enter valid medicine name",Toast.LENGTH_SHORT).show();
+                if (medname.getText().toString().matches("")) {
+                    Toast.makeText(Build.this, "Enter medicine name", Toast.LENGTH_SHORT).show();
+                } else if (valid == false) {
+                    Toast.makeText(Build.this, "Enter valid medicine name", Toast.LENGTH_SHORT).show();
 
-                }
-                else
-                {
+                } else {
                     medinames[in] = medname.getText().toString();
                     qty.add(Integer.parseInt(amount.getText().toString()));
-                    Toast.makeText(Build.this,"Medicine Added",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Build.this, "Medicine Added", Toast.LENGTH_SHORT).show();
                     medname.setText("");
                     mec.add(medinames[in]);
                     in++;
@@ -281,55 +266,49 @@ public class Build extends AppCompatActivity {
                 R.layout.side_panel, sideitems));*/
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
-               mDrawerLayout,         /* DrawerLayout object */
+                mDrawerLayout,         /* DrawerLayout object */
                 toolbar,  /* navigation drawer icon to replace 'Up' caret */
                 R.string.app_name,  /* "open drawer" description */
-               R.string.app_name  /* "close drawer" description */) ;
+                R.string.app_name  /* "close drawer" description */);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
-                if(position==1)
-                {
+                if (position == 1) {
                     Intent i = new Intent(Build.this, profile.class);
                     startActivity(i);
                 }
-                if(position==2)
-                {
-                    Intent i = new Intent(Build.this,ShowMessage.class);
+                if (position == 2) {
+                    Intent i = new Intent(Build.this, ShowMessage.class);
                     startActivity(i);
                 }
 
-                if(position==4)
-                {
+                if (position == 4) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("plain/text");
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "abc@gmail.com" });
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"abc@gmail.com"});
                     intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback : MedicoHome");
                     intent.putExtra(Intent.EXTRA_TEXT, "...");
                     startActivity(Intent.createChooser(intent, "Choose..."));
 
                 }
-                if(position==3)
-                {
-                    try
-                    { Intent i = new Intent(Intent.ACTION_SEND);
+                if (position == 3) {
+                    try {
+                        Intent i = new Intent(Intent.ACTION_SEND);
                         i.setType("text/plain");
                         i.putExtra(Intent.EXTRA_SUBJECT, "Medicohome");
                         String sAux = "\nCheck out this application\n\n";
                         sAux = sAux + "https://www.facebook.com/Medicohomeinc?fref=ts \n\n";
                         i.putExtra(Intent.EXTRA_TEXT, sAux);
                         startActivity(Intent.createChooser(i, "Choose.."));
-                    }
-                    catch(Exception e)
-                    { //e.toString();
+                    } catch (Exception e) { //e.toString();
                     }
 
                 }
 
-                if(position==5){
+                if (position == 5) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.appify4u.infonizer")));
 
                 }
@@ -340,7 +319,7 @@ public class Build extends AppCompatActivity {
                             .setCancelable(false)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                   SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("login", 0);
                                     editor.commit();
@@ -366,11 +345,11 @@ public class Build extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String name = sharedPreferences.getString("name",null);
+        String name = sharedPreferences.getString("name", null);
 
         getSupportActionBar().setTitle(name);
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-       // getActionBar().hide();
+        // getActionBar().hide();
 
     }
 
@@ -406,10 +385,9 @@ public class Build extends AppCompatActivity {
             return true;
         }
 
-        if(id== R.id.action_cart)
-        {
-            if(in==0)
-                Toast.makeText(Build.this,"No items in cart yet",Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_cart) {
+            if (in == 0)
+                Toast.makeText(Build.this, "No items in cart yet", Toast.LENGTH_SHORT).show();
             else {
                 Intent i = new Intent(Build.this, MyCart.class);
                 i.putExtra("Mednames", medinames);
@@ -418,56 +396,51 @@ public class Build extends AppCompatActivity {
                 startActivity(i);
             }
         }
-       return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
     class DownloadWebPageTask extends AsyncTask<String, Void, String> {
         String text;
+
         @Override
         protected void onPreExecute() {
 
 
-        };
+        }
 
         @Override
         protected String doInBackground(String... urls) {
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://api.medicohome.com/autocomplete.php");
+            HttpPost httppost = new HttpPost(apilink + "/autocomplete.php");
             JSONObject json = new JSONObject();
 
             try {
                 // JSON data:
 
 
-            json.put("stringq", nameyet);
-           /* json.put("branch", Branch);
-            json.put("year", Year);
+                json.put("stringq", nameyet);
 
-            json.put("pass",Pass);*/
-
-
-                JSONArray postjson=new JSONArray();
+                JSONArray postjson = new JSONArray();
                 postjson.put(json);
 
-                Log.e("Yo","Post data");
+                Log.e("Yo", "Post data");
                 // Post the data:
-                httppost.setHeader("json",json.toString());
-                httppost.getParams().setParameter("jsonpost",postjson);
+                httppost.setHeader("json", json.toString());
+                httppost.getParams().setParameter("jsonpost", postjson);
 
                 // Execute HTTP Post Request
                 HttpResponse response = httpclient.execute(httppost);
 
-                Log.e("Yo","Posting data");
+                Log.e("Yo", "Posting data");
 
                 // for JSON Response :
-                if(response != null)
-                {
+                if (response != null) {
 
                     InputStream is = response.getEntity().getContent();
 
-                    Log.e("Yo","inside data" + response + "    "+ is);
+                    Log.e("Yo", "inside data" + response + "    " + is);
                     BufferedReader reader = new BufferedReader(new InputStreamReader(is));
                     StringBuilder sb = new StringBuilder();
 
@@ -486,14 +459,12 @@ public class Build extends AppCompatActivity {
                         }
                     }
                     text = sb.toString();
-                    Log.e("YO-Response",text);
+                    Log.e("YO-Response", text);
 
                 }
 
 
-
-
-            }catch (ClientProtocolException e) {
+            } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
             } catch (IOException e) {
                 // TODO Auto-generated catch block
@@ -514,7 +485,7 @@ public class Build extends AppCompatActivity {
                 arr = ob.getJSONArray("suggest_medicine");
                 list = new ArrayList<String>();
                 flags = new ArrayList<String>();
-                for(int i = 0; i < arr.length(); i++){
+                for (int i = 0; i < arr.length(); i++) {
                     try {
                         list.add(arr.getJSONObject(i).getString("medicine_name"));
                         flags.add(arr.getJSONObject(i).getString("prescription_required"));
@@ -524,7 +495,6 @@ public class Build extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
 
 
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
@@ -539,9 +509,9 @@ public class Build extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                         // TODO Auto-generated method stub
-                        valid=true;
-                        if(flags.get(arg2).toString().equals("1"))
-                            preupload=true;
+                        valid = true;
+                        if (flags.get(arg2).toString().equals("1"))
+                            preupload = true;
                     }
                 });
 
@@ -552,6 +522,7 @@ public class Build extends AppCompatActivity {
 
         }
     }
+
     // When Image is selected from Gallery
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -563,7 +534,7 @@ public class Build extends AppCompatActivity {
                 // Get the Image from data
 
                 imgPath = DocumentUtils.getPath(Build.this, data.getData());
-                Bitmap bitmap= BitmapFactory.decodeFile(imgPath);
+                Bitmap bitmap = BitmapFactory.decodeFile(imgPath);
 
                 params.put("filename", imgPath);
 
@@ -601,7 +572,7 @@ public class Build extends AppCompatActivity {
 
             protected void onPreExecute() {
 
-            };
+            }
 
             @Override
             protected String doInBackground(Void... params) {
@@ -648,7 +619,7 @@ public class Build extends AppCompatActivity {
                         String str = "";
                         str = convertByteArrayToString(responseBody);
 
-                        Log.e("yeah",str);
+                        Log.e("yeah", str);
                         preid = str;
                         Toast.makeText(getApplicationContext(),
                                 "Success : " + str,
@@ -692,19 +663,13 @@ public class Build extends AppCompatActivity {
         return Uri.parse(path);
     }
 
-    public static String convertByteArrayToString(byte[] byteArray)
-    {
+    public static String convertByteArrayToString(byte[] byteArray) {
         String s = null;
-        if(byteArray!=null)
-        {
-            if(byteArray.length>0)
-            {
-                try
-                {
-                    s = new String(byteArray,"UTF-8");
-                }
-                catch (Exception e)
-                {
+        if (byteArray != null) {
+            if (byteArray.length > 0) {
+                try {
+                    s = new String(byteArray, "UTF-8");
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -715,7 +680,6 @@ public class Build extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 

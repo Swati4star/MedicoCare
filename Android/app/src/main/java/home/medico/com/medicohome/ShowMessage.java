@@ -1,32 +1,24 @@
 package home.medico.com.medicohome;
 
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import home.medico.com.medicohome.AlertDialogManager;
-import home.medico.com.medicohome.ConnectionDetector;
-import home.medico.com.medicohome.ServerUtilities;
-import home.medico.com.medicohome.WakeLocker;
-import home.medico.com.medicohome.R;
-
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gcm.GCMRegistrar;
 
@@ -47,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ShowMessage extends AppCompatActivity {
+public class ShowMessage extends AppCompatActivity implements Constants {
     // label to display gcm messages
     TextView msg;
 
@@ -79,16 +71,16 @@ public class ShowMessage extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.list);
         call = (Button) findViewById(R.id.call);
         cd = new ConnectionDetector(getApplicationContext());
-call.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        if(isNetworkAvailable())
-            new DownloadWebPageTask2().execute();
-        else
-            Toast.makeText(ShowMessage.this,"Cannot Connect to Internet",Toast.LENGTH_SHORT).show();
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isNetworkAvailable())
+                    new DownloadWebPageTask2().execute();
+                else
+                    Toast.makeText(ShowMessage.this, "Cannot Connect to Internet", Toast.LENGTH_SHORT).show();
 
-    }
-});
+            }
+        });
 
 
         // Make sure the device has the proper dependencies.
@@ -104,17 +96,17 @@ call.setOnClickListener(new View.OnClickListener() {
         // Get GCM registration id
         final String regId = GCMRegistrar.getRegistrationId(this);
 
-        Log.e("agbe",""+regId);
+        Log.e("agbe", "" + regId);
         // Check if regid already presents
         if (regId.equals("")) {
             // Registration is not present, register now with GCM
-            Log.e("dbsd","null regID");
+            Log.e("dbsd", "null regID");
             GCMRegistrar.register(this, Values.SENDER_ID);
-        }else {
+        } else {
             // Device is already registered on GCM
             if (GCMRegistrar.isRegisteredOnServer(this)) {
                 // Skips registration.
-             //   Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+                //   Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
             } else {
                 // Try to register again, but not in the UI thread.
                 // It's also necessary to cancel the thread onDestroy(),
@@ -143,7 +135,7 @@ call.setOnClickListener(new View.OnClickListener() {
 
     /**
      * Receiving push messages
-     * */
+     */
 
 
     private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
@@ -158,14 +150,13 @@ call.setOnClickListener(new View.OnClickListener() {
              * For now i am just displaying it on the screen
              * */
             // Showing received message
-           // Toast.makeText(getApplicationContext(), "New Message: " + newMessage, Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), "New Message: " + newMessage, Toast.LENGTH_LONG).show();
             // Releasing wake lock
-            Log.e("new message","New Message: order set " + newMessage);
-            Toast.makeText(ShowMessage.this,"New Message: order set " + newMessage,Toast.LENGTH_LONG).show();
+            Log.e("new message", "New Message: order set " + newMessage);
+            Toast.makeText(ShowMessage.this, "New Message: order set " + newMessage, Toast.LENGTH_LONG).show();
             WakeLocker.release();
         }
     };
-
 
 
     @Override
@@ -191,7 +182,6 @@ call.setOnClickListener(new View.OnClickListener() {
     }
 
 
-
     class DownloadWebPageTask2 extends AsyncTask<String, Void, String> {
         String text;
 
@@ -205,19 +195,18 @@ call.setOnClickListener(new View.OnClickListener() {
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(
-                    "http://api.medicohome.com/myorders.php");
+            HttpPost httppost = new HttpPost(apilink + "/myorders.php");
             JSONObject json = new JSONObject();
 
             try {
                 // JSON data:
                 json.put("userid", userid);
-                json.put("pass","yolo");
+                json.put("pass", "yolo");
 
 
                 JSONArray postjson = new JSONArray();
                 postjson.put(json);
-             // Post the data:
+                // Post the data:
                 httppost.setHeader("json", json.toString());
                 httppost.getParams().setParameter("jsonpost", postjson);
 
@@ -282,7 +271,7 @@ call.setOnClickListener(new View.OnClickListener() {
             json.put("coord2",longitude);
             json.put("order", Arrays.toString(values));
             json.put("address",""+address);*/
-            int j=0;
+            int j = 0;
             JSONObject ob;
             JSONArray arr;
             try {
@@ -291,43 +280,40 @@ call.setOnClickListener(new View.OnClickListener() {
 
                 //Log.e("ewgweg","\nLength is : "  + arr.length());
 
-                if(arr.length()<=0)
-                   // Toast.makeText(MainActivity.this,"No orders yet",Toast.LENGTH_SHORT).show();
+                if (arr.length() <= 0)
+                    // Toast.makeText(MainActivity.this,"No orders yet",Toast.LENGTH_SHORT).show();
 
 
-
-                Log.e("yo", " " + arr + arr.length());
-                for(int i = 0; i < arr.length(); i++){
+                    Log.e("yo", " " + arr + arr.length());
+                for (int i = 0; i < arr.length(); i++) {
                     try {
 
-                        if(!arr.getJSONObject(i).has("order"))
+                        if (!arr.getJSONObject(i).has("order"))
                             continue;
                         list1.add(arr.getJSONObject(i).getString("order"));
                         JSONObject ob1;
                         JSONArray arr1;
-                        if(arr.getJSONObject(i).getString("accepted").contains("true")) {
+                        if (arr.getJSONObject(i).getString("accepted").contains("true")) {
                             ob1 = new JSONObject(arr.getJSONObject(i).getString("0"));
                             ob1 = new JSONObject(ob1.getString("orders"));
 
                             list2.add(ob1.getString("store_name") + "\n" + "owner_name" + "\n" + "address" + "\n" + "time" + "\n");
 
-                        }
-                        else
-                        list2.add("Not yet accepted");
+                        } else
+                            list2.add("Not yet accepted");
                         list3.add(arr.getJSONObject(i).getString("id"));
-
 
 
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                        Log.e("Error","Errror at : " + i + " "+e.getMessage());
+                        Log.e("Error", "Errror at : " + i + " " + e.getMessage());
                     }
                 }
 
             } catch (Exception e) {
 
-                Log.e("here",e.getMessage());
+                Log.e("here", e.getMessage());
             }
 
             String[] order = new String[list1.size()];
@@ -340,11 +326,12 @@ call.setOnClickListener(new View.OnClickListener() {
             orderid = list3.toArray(orderid);
 
 
-           CustomList adapter = new CustomList(ShowMessage.this, order,address, orderid);
+            CustomList adapter = new CustomList(ShowMessage.this, order, address, orderid);
             lv.setAdapter(adapter);
 
 
-        }}
+        }
+    }
 
 
     @Override
@@ -355,7 +342,7 @@ call.setOnClickListener(new View.OnClickListener() {
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }

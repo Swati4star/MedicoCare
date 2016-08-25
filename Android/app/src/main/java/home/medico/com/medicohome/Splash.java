@@ -1,12 +1,8 @@
 package home.medico.com.medicohome;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +19,9 @@ import android.widget.TextView;
 public class Splash extends AppCompatActivity {
 
     ImageView iv;
-    TextView t1,t2;
-    LinearLayout l ;
+    TextView t1, t2;
+    LinearLayout l;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +53,13 @@ public class Splash extends AppCompatActivity {
 
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     int in = sharedPreferences.getInt("login", -1);
-                    Log.e("YYYYY","seret  "+in);
-                    if(in==1) {
+                    Log.e("YYYYY", "seret  " + in);
+                    if (in == 1) {
                         Intent i = new Intent(Splash.this, Options.class);
                         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                         startActivity(i);
                         finish();
-                    }
-                    else {
+                    } else {
 
                         Intent i2 = new Intent(Splash.this, LoginOrSignup.class);
                         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

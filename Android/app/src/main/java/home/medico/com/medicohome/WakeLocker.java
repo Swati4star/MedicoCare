@@ -1,8 +1,5 @@
 package home.medico.com.medicohome;
 
-/**
- * Created by kamlesh kumar garg on 13-06-2015.
- */
 import android.content.Context;
 import android.os.PowerManager;
 
@@ -20,6 +17,7 @@ public abstract class WakeLocker {
     }
 
     public static void release() {
-        if (wakeLock != null) wakeLock.release(); wakeLock = null;
+        if (wakeLock != null) wakeLock.release();
+        wakeLock = null;
     }
 }

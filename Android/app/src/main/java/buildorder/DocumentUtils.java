@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * Created by kamlesh kumar garg on 27-05-2015.
+ * Created by swati garg on 27-05-2015.
  */
 public class DocumentUtils {
 
@@ -169,8 +169,6 @@ public class DocumentUtils {
      * @return Whether the Uri authority is Google Photos.
      */
     public static boolean isGooglePhotosUri(Uri uri) {
-        if (uri.getAuthority() != null)
-            return true;
-        return false;
+        return uri.getAuthority() != null;
     }
 }

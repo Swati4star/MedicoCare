@@ -1,8 +1,5 @@
 package home.medico.com.medicohome;
 
-/**
- * Created by kamlesh kumar garg on 13-06-2015.
- */
 
 import android.content.Context;
 import android.util.Log;
@@ -28,10 +25,9 @@ public final class ServerUtilities {
 
     /**
      * Register this account/device pair within the server.
-     *
      */
     public static void register(final Context context, String name, String email, final String regId) {
-      //  Log.i(TAG, "registering device (regId = " + regId + ")");
+        //  Log.i(TAG, "registering device (regId = " + regId + ")");
         //String serverUrl = SERVER_URL;
         Map<String, String> params = new HashMap<String, String>();
         params.put("regId", regId);
@@ -43,18 +39,18 @@ public final class ServerUtilities {
         // As the server might be down, we will retry it a couple
         // times.
         for (int i = 1; i <= MAX_ATTEMPTS; i++) {
-           // Log.d(TAG, "Attempt #" + i + " to register");
+            // Log.d(TAG, "Attempt #" + i + " to register");
 
-             //   displayMessage(context, context.getString(R.string.server_registering, i, MAX_ATTEMPTS));
-             //   post(serverUrl, params);
-                GCMRegistrar.setRegisteredOnServer(context, true);
-                String message = context.getString(R.string.server_registered);
-                CommonUtilities.displayMessage(context, message);
-                return;
-                // Here we are simplifying and retrying on any error; in a real
-                // application, it should retry only on unrecoverable errors
-                // (like HTTP error code 503).
-              //  Log.e(TAG, "Failed to register on attempt " + i + ":" + e);
+            //   displayMessage(context, context.getString(R.string.server_registering, i, MAX_ATTEMPTS));
+            //   post(serverUrl, params);
+            GCMRegistrar.setRegisteredOnServer(context, true);
+            String message = context.getString(R.string.server_registered);
+            CommonUtilities.displayMessage(context, message);
+            return;
+            // Here we are simplifying and retrying on any error; in a real
+            // application, it should retry only on unrecoverable errors
+            // (like HTTP error code 503).
+            //  Log.e(TAG, "Failed to register on attempt " + i + ":" + e);
 
         }
         String message = context.getString(R.string.server_register_error,
@@ -66,15 +62,15 @@ public final class ServerUtilities {
      * Unregister this account/device pair within the server.
      */
     public static void unregister(final Context context, final String regId) {
-    //    Log.i(TAG, "unregistering device (regId = " + regId + ")");
-      //  String serverUrl = SERVER_URL + "/unregister";
+        //    Log.i(TAG, "unregistering device (regId = " + regId + ")");
+        //  String serverUrl = SERVER_URL + "/unregister";
         Map<String, String> params = new HashMap<String, String>();
         params.put("regId", regId);
 
-     //       post(serverUrl, params);
-            GCMRegistrar.setRegisteredOnServer(context, false);
-            String message = context.getString(R.string.server_unregistered);
-            CommonUtilities.displayMessage(context, message);
+        //       post(serverUrl, params);
+        GCMRegistrar.setRegisteredOnServer(context, false);
+        String message = context.getString(R.string.server_unregistered);
+        CommonUtilities.displayMessage(context, message);
 
     }
 
@@ -82,8 +78,7 @@ public final class ServerUtilities {
      * Issue a POST request to the server.
      *
      * @param endpoint POST address.
-     * @param params request parameters.
-     *
+     * @param params   request parameters.
      * @throws IOException propagated from POST.
      */
     private static void post(String endpoint, Map<String, String> params)
@@ -107,7 +102,7 @@ public final class ServerUtilities {
             }
         }
         String body = bodyBuilder.toString();
-       // Log.v(TAG, "Posting '" + body + "' to " + url);
+        // Log.v(TAG, "Posting '" + body + "' to " + url);
         byte[] bytes = body.getBytes();
         HttpURLConnection conn = null;
         try {

@@ -1,9 +1,7 @@
 package home.medico.com.medicohome;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,6 +15,7 @@ public class MessageSent extends AppCompatActivity {
 
 
     Button next;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,7 @@ public class MessageSent extends AppCompatActivity {
         next = (Button) findViewById(R.id.next);
         next.setTypeface(custom_font);
         TextView t = (TextView) findViewById(R.id.yo);
-                t.setTypeface(custom_font);
+        t.setTypeface(custom_font);
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -52,7 +51,7 @@ public class MessageSent extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-          int id = item.getItemId();
+        int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
 }

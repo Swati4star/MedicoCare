@@ -8,19 +8,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Vibrator;
 import android.preference.PreferenceManager;
 
 import home.medico.com.medicohome.R;
 
-/**
- * Created by kamlesh kumar garg on 05-07-2015.
- */
 public class AlarmReciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManager mNM;
-        mNM = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+        mNM = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         // Set the icon, scrolling text and timestamp
         Notification notification = new Notification(R.drawable.logo, "Test Alarm",
                 System.currentTimeMillis());
@@ -35,8 +31,8 @@ public class AlarmReciever extends BroadcastReceiver {
         String alarms = getAlarms.getString("ringtone", null);
 
 
-        if(alarms!=null)
-        notification.sound = Uri.parse(alarms);
+        if (alarms != null)
+            notification.sound = Uri.parse(alarms);
 
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
 

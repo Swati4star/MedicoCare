@@ -1,14 +1,11 @@
 package reminder;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,44 +23,42 @@ public class DisplayMed extends AppCompatActivity {
         Intent i = getIntent();
         TextView t = (TextView) findViewById(R.id.medname);
         TextView t1 = (TextView) findViewById(R.id.meddays);
-        TextView t2= (TextView) findViewById(R.id.meddosage);
+        TextView t2 = (TextView) findViewById(R.id.meddosage);
         TextView t3 = (TextView) findViewById(R.id.medtime);
         TextView t4 = (TextView) findViewById(R.id.medmsg);
-        t.setText(i.getStringExtra(DBhelp.KEY_NAME) + " " );
+        t.setText(i.getStringExtra(DBhelp.KEY_NAME) + " ");
         t1.setText(i.getStringExtra(DBhelp.KEY_DAYS) + " ");
         t2.setText("Dosage : " + i.getStringExtra(DBhelp.KEY_DOSAGE) + " ");
         t3.setText("Take at : " + i.getStringExtra(DBhelp.KEY_TIME) + " ");
         t4.setText(i.getStringExtra(DBhelp.KEY_MESSAGE) + " ");
-        String col =  i.getStringExtra(DBhelp.KEY_COLOR);
+        String col = i.getStringExtra(DBhelp.KEY_COLOR);
         Button im = (Button) findViewById(R.id.col);
-        if(!col.equals(" "))
-        {
-            if(col.equals("Blue"))
+        if (!col.equals(" ")) {
+            if (col.equals("Blue"))
                 im.setBackgroundResource(R.drawable.blue_selected);
-            if(col.equals("Dblue"))
+            if (col.equals("Dblue"))
                 im.setBackgroundResource(R.drawable.dblue_selected);
-            if(col.equals("Green"))
+            if (col.equals("Green"))
                 im.setBackgroundResource(R.drawable.green_selected);
-            if(col.equals("Dgreen"))
+            if (col.equals("Dgreen"))
                 im.setBackgroundResource(R.drawable.dgreen_selected);
-            if(col.equals("Orange"))
+            if (col.equals("Orange"))
                 im.setBackgroundResource(R.drawable.orange_selected);
-            if(col.equals("Orange2"))
+            if (col.equals("Orange2"))
                 im.setBackgroundResource(R.drawable.orange2_selected);
-            if(col.equals("Purple2"))
+            if (col.equals("Purple2"))
                 im.setBackgroundResource(R.drawable.purple2_selected);
-            if(col.equals("Purple"))
+            if (col.equals("Purple"))
                 im.setBackgroundResource(R.drawable.purple_selected);
-            if(col.equals("Red"))
+            if (col.equals("Red"))
                 im.setBackgroundResource(R.drawable.red_selected);
-            if(col.equals("Grey"))
+            if (col.equals("Grey"))
                 im.setBackgroundResource(R.drawable.grey_selected);
-            if(col.equals("White"))
+            if (col.equals("White"))
                 im.setBackgroundResource(R.drawable.white_selected);
-            if(col.equals("Maroon"))
+            if (col.equals("Maroon"))
                 im.setBackgroundResource(R.drawable.maroon_selected);
-            }
-        else
+        } else
             im.setVisibility(View.GONE);
 
 
@@ -81,6 +76,7 @@ public class DisplayMed extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +32,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class signup extends AppCompatActivity {
+public class signup extends AppCompatActivity implements Constants {
 Button next;
     ProgressDialog pd;
     EditText first,last,num,pass,cpass,email;
@@ -125,7 +124,7 @@ Button next;
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://api.medicohome.com/signup.php");
+            HttpPost httppost = new HttpPost(apilink + "/signup.php");
             JSONObject json = new JSONObject();
 
             try {

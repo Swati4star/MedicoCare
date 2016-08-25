@@ -33,12 +33,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
-public class LoginOrSignup extends AppCompatActivity {
+public class LoginOrSignup extends AppCompatActivity implements Constants {
 
-    EditText num,pass;
-    String Num,Pass;
-    ProgressDialog pd,pd2;
-    TextView error,forget,signup;
+    EditText num, pass;
+    String Num, Pass;
+    ProgressDialog pd, pd2;
+    TextView error, forget, signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,18 +88,15 @@ public class LoginOrSignup extends AppCompatActivity {
                 Pass = pass.getText().toString();
 
                 //Intent i = new Intent("android.intent.action.MEDICOUSER");
-                if(Num.matches(""))
+                if (Num.matches(""))
                     error.setText("Enter number");
-                else if(Pass.matches(""))
+                else if (Pass.matches(""))
                     error.setText("Enter Password");
-                else
-                {
+                else {
                     new DownloadWebPageTask().execute();
                 }
             }
         });
-
-
 
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +107,7 @@ public class LoginOrSignup extends AppCompatActivity {
                 Intent i = new Intent(LoginOrSignup.this, signup.class);
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 startActivity(i);
-               // finish();
+                // finish();
             }
         });
 
@@ -134,7 +131,7 @@ public class LoginOrSignup extends AppCompatActivity {
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://api.medicohome.com/login.php");
+            HttpPost httppost = new HttpPost(apilink + "/login.php");
             JSONObject json = new JSONObject();
 
             try {
@@ -205,18 +202,17 @@ public class LoginOrSignup extends AppCompatActivity {
                 JSONObject o = new JSONObject(text);
 
                 String s = o.getString("success");
-                if(s.contains("0"))
+                if (s.contains("0"))
                     error.setText(o.getString("message"));
-                else
-                {
+                else {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("login", 1);
                     editor.putString("name", o.getString("first name"));
                     String[] x = text.split(" ");
-                    editor.putString("userid",o.getString("id"));
+                    editor.putString("userid", o.getString("id"));
                     editor.commit();
-                    Log.e("bbes","id : " + x[0]);
+                    Log.e("bbes", "id : " + x[0]);
                     Intent i = new Intent(LoginOrSignup.this, Options.class);
                     overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this will clear all the stack
@@ -244,12 +240,11 @@ public class LoginOrSignup extends AppCompatActivity {
 
             Log.e("Yo", "Started");
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://api.medicohome.com/forget-password.php");
+            HttpPost httppost = new HttpPost(apilink + "/forget-password.php");
             JSONObject json = new JSONObject();
 
             try {
                 // JSON data:
-
 
 
                 json.put("phone", Num);
@@ -313,16 +308,14 @@ public class LoginOrSignup extends AppCompatActivity {
             Log.e("YO", "Done");
             pd2.dismiss();
 
-            if(text.contains("Success"))
-            {
+            if (text.contains("Success")) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginOrSignup.this);
                 builder.setMessage("A password reset link has been sent to your email address.")
                         .setCancelable(false)
-                        .setPositiveButton("OK",null);
+                        .setPositiveButton("OK", null);
                 AlertDialog alert = builder.create();
                 alert.show();
-            }
-            else
+            } else
                 Toast.makeText(LoginOrSignup.this, text, Toast.LENGTH_LONG).show();
         }
 
@@ -354,6 +347,7 @@ public class LoginOrSignup extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

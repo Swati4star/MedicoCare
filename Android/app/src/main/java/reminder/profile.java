@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import java.util.Calendar;
 
 import home.medico.com.medicohome.R;
 
@@ -26,6 +25,7 @@ public class profile extends ListActivity {
 
     Button add;
     ListView lv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class profile extends ListActivity {
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         setContentView(R.layout.activity_profile);
         SharedPreferences sharedPreferences2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String name2 = sharedPreferences2.getString("name",null);
+        String name2 = sharedPreferences2.getString("name", null);
         getActionBar().setTitle(name2);
         getActionBar().setIcon(R.drawable.girl);
 
@@ -78,7 +78,8 @@ public class profile extends ListActivity {
         switch (item.getItemId()) {
             case R.id.menu_edit:
                 Cursor c1 = mNotesCursor;
-                c1.moveToPosition(info.position); Intent i = new Intent(this, AddMed.class);
+                c1.moveToPosition(info.position);
+                Intent i = new Intent(this, AddMed.class);
                 i.putExtra(DBhelp.KEY_ROWID, info.id);
                 i.putExtra(DBhelp.KEY_NAME, c1.getString(c1.getColumnIndexOrThrow(DBhelp.KEY_NAME)));
                 i.putExtra(DBhelp.KEY_DAYS, c1.getString(c1.getColumnIndexOrThrow(DBhelp.KEY_DAYS)));
@@ -91,7 +92,7 @@ public class profile extends ListActivity {
 
             case R.id.menu_delete:
                 long id = info.id;
-                AlarmService a = new AlarmService(getApplicationContext(),id);
+                AlarmService a = new AlarmService(getApplicationContext(), id);
                 a.cancel(id);
                 DBhelp d = new DBhelp(profile.this);
                 d.open();
@@ -126,8 +127,6 @@ public class profile extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         openContextMenu(v);
     }
-
-
 
 
     private void fillData() {
@@ -174,14 +173,13 @@ public class profile extends ListActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             // TODO Auto-generated method stub
-            Intent i = new Intent(this,SettingActivity.class);
+            Intent i = new Intent(this, SettingActivity.class);
             startActivity(i);
             return true;
         }

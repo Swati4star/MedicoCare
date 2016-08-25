@@ -1,46 +1,28 @@
 package buildorder;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.location.Address;
-import android.location.Geocoder;
-import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
 import home.medico.com.medicohome.R;
 
 
-public class location extends FragmentActivity{
-
-
+public class location extends FragmentActivity {
 
     GoogleMap googleMap;
     Button next;
-    double latitude,longitude;
+    double latitude, longitude;
     Boolean locationgot;
 
     @Override
@@ -64,10 +46,9 @@ public class location extends FragmentActivity{
             @Override
             public void onClick(View view) {
 
-                if(locationgot == false)
-                {
+                if (!locationgot) {
                     GPSTracker tracker = new GPSTracker(location.this);
-                    if (tracker.canGetLocation() == false) {
+                    if (!tracker.canGetLocation()) {
                         tracker.showSettingsAlert();
                         locationgot = false;
                     } else {
@@ -78,16 +59,15 @@ public class location extends FragmentActivity{
 
                     addMarker();
 
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude),14.0f) );
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 14.0f));
 
-                }
-                else {
+                } else {
 
 
                     Intent i = new Intent(location.this, Build.class);
                     overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                     i.putExtra("latitude", Double.toString(latitude));
-                    i.putExtra("longitude",Double.toString(longitude));
+                    i.putExtra("longitude", Double.toString(longitude));
                     startActivity(i);
 
                 }
@@ -95,34 +75,29 @@ public class location extends FragmentActivity{
         });
 
 
-
-
         GPSTracker tracker = new GPSTracker(this);
-            if (tracker.canGetLocation() == false) {
-                tracker.showSettingsAlert();
-                locationgot = false;
-            } else {
-                latitude = tracker.getLatitude();
-                longitude = tracker.getLongitude();
-                locationgot = true;
-            }
+        if (!tracker.canGetLocation()) {
+            tracker.showSettingsAlert();
+            locationgot = false;
+        } else {
+            latitude = tracker.getLatitude();
+            longitude = tracker.getLongitude();
+            locationgot = true;
+        }
 
         addMarker();
 
-    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude),14.0f) );
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 14.0f));
     }
 
 
-
-
-
-    private void addMarker(){
+    private void addMarker() {
         /** Make sure that the map has been initialised **/
-        if(null != googleMap){
+        if (null != googleMap) {
             googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(latitude, longitude))
-                            .title("My Location")
-                            .draggable(false)
+                    .position(new LatLng(latitude, longitude))
+                    .title("My Location")
+                    .draggable(false)
             );
         }
     }

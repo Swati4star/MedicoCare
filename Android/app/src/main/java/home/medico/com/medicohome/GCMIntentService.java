@@ -28,13 +28,13 @@ public class GCMIntentService extends GCMBaseIntentService {
     protected void onRegistered(Context context, String registrationId) {
         Log.i(TAG, "Device registered: regId = " + registrationId);
         CommonUtilities.displayMessage(context, "Your device registred with GCM");
-       // Log.d("NAME", MainActivity.name);
+        // Log.d("NAME", MainActivity.name);
         //ServerUtilities.register(context, MainActivity.name, MainActivity.email, registrationId);
     }
 
     /**
      * Method called on device un registred
-     * */
+     */
     @Override
     protected void onUnregistered(Context context, String registrationId) {
         Log.i(TAG, "Device unregistered");
@@ -44,7 +44,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on Receiving a new message
-     * */
+     */
     @Override
     protected void onMessage(Context context, Intent intent) {
         Log.i(TAG, "Received message");
@@ -57,7 +57,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on receiving a deleted message
-     * */
+     */
     @Override
     protected void onDeletedMessages(Context context, int total) {
         Log.i(TAG, "Received deleted messages notification");
@@ -69,7 +69,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
     /**
      * Method called on Error
-     * */
+     */
     @Override
     public void onError(Context context, String errorId) {
         Log.i(TAG, "Received error: " + errorId);
