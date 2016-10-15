@@ -76,7 +76,7 @@ public class Options extends AppCompatActivity implements Constants {
             }
         });
         amb.setVisibility(View.GONE);
-        getSupportActionBar().setTitle("MedicoHome");
+        getSupportActionBar().setTitle("MedicoCare");
     }
 
     @Override

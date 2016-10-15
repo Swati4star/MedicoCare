@@ -28,7 +28,7 @@
     <string name="options_unregister">Unregister</string>
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
-    <string name="Remind">Medicohome Reminder</string>
+    <string name="Remind">MedicoCare Reminder</string>
     <string-array name="medicines">
         <item>Nexium</item>
         <item>Humira</item>
