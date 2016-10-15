@@ -224,7 +224,7 @@ public class ConfirmAdd extends AppCompatActivity {
                                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("login", 0);
-                                    editor.commit();
+                                    editor.apply();
 
 
                                     Intent intent = new Intent(ConfirmAdd.this, LoginOrSignup.class);

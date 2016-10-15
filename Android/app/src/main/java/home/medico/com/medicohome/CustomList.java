@@ -1,7 +1,6 @@
 package home.medico.com.medicohome;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ public class CustomList extends ArrayAdapter<String> {
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View rowView = inflater.inflate(R.layout.message2, null, true);
+        View rowView = inflater.inflate(R.layout.message2, parent, true);
         TextView t = (TextView) rowView.findViewById(R.id.textView1);
         String a[] = or[position].split(",");
 

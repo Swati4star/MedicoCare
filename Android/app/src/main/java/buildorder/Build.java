@@ -67,8 +67,6 @@ import reminder.profile;
 
 public class Build extends AppCompatActivity implements Constants {
 
-    //NumberPicker numberPicker;
-
     ProgressDialog prgDialog;
     String encodedString;
     Boolean preupload;
@@ -322,7 +320,7 @@ public class Build extends AppCompatActivity implements Constants {
                                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("login", 0);
-                                    editor.commit();
+                                    editor.apply();
 
 
                                     Intent intent = new Intent(Build.this, LoginOrSignup.class);

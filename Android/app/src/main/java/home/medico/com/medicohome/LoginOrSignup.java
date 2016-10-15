@@ -211,7 +211,7 @@ public class LoginOrSignup extends AppCompatActivity implements Constants {
                     editor.putString("name", o.getString("first name"));
                     String[] x = text.split(" ");
                     editor.putString("userid", o.getString("id"));
-                    editor.commit();
+                    editor.apply();
                     Log.e("bbes", "id : " + x[0]);
                     Intent i = new Intent(LoginOrSignup.this, Options.class);
                     overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

@@ -8,11 +8,11 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="home.medico.com.medicohome.SplashScreen" >
+    tools:context="home.medico.com.medicohome.Splash" >
 
     <TextView
         android:id="@+id/error"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
         android:textColor="@color/green"
         android:layout_marginTop="29dp"
         android:text="New User?"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

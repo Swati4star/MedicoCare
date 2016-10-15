@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/parent"
     android:paddingTop="?android:attr/actionBarSize"
-    tools:context="home.medico.com.medicohome.profile" >
+    tools:context="reminder.profile" >
 
     <Button
         android:background="#1f9c62"

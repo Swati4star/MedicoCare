@@ -26,7 +26,7 @@ public class CustomList2 extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.message, null, true);
+        View rowView = inflater.inflate(R.layout.message, parent, true);
         Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Raleway-Regular.ttf");
         TextView txtTitle = (TextView) rowView.findViewById(R.id.textView1);
         txtTitle.setTypeface(custom_font);

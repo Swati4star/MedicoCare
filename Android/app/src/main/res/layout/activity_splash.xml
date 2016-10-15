@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="?android:attr/actionBarSize"
-    tools:context="home.medico.com.medicohome.SplashScreen" >
+    tools:context="home.medico.com.medicohome.Splash" >
 
     <ImageView
         android:id="@+id/logo"

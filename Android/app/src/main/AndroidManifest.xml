@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="home.medico.com.medicohome" >
 
-    <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="22" />
 
     <permission
         android:name="com.zako.android.locationapi.maps.permission.MAPS_RECEIVE"

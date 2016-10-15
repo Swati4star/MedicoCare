@@ -38,56 +38,50 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:singleLine="true"
             android:id="@+id/a"
             android:layout_marginTop="10dp"
-            />
+            android:maxLines="1" />
 
         <EditText
             android:layout_marginTop="10dp"
             android:id="@+id/b"
-            android:singleLine="true"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Flat/House/Office No."
-            />
+            android:maxLines="1" />
             <EditText
 
 
                 android:id="@+id/c"
-                android:singleLine="true"
                 android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="Street/Society/Office Name"
-            />
+                android:maxLines="1" />
         <EditText
             android:layout_marginTop="10dp"
-            android:singleLine="true"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Landmark/Locality"
             android:id="@+id/d"
-            />
+            android:maxLines="1" />
             <EditText
 
                 android:id="@+id/e"
-                android:singleLine="true"
                 android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="City"
-            />
+                android:maxLines="1" />
 
             <EditText
 
                 android:id="@+id/in"
-                android:singleLine="true"
                 android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="Any Extra Instructions....(optional)"
-                />
+                android:maxLines="1" />
         </LinearLayout>
 
         <LinearLayout
