@@ -1,5 +1,7 @@
 <?php
-	define('API_ACCESS_KEY', 'AIzaSyBTb_3pCN53EpoF--b0RvWp3FDExlCmBPo');
+
+	require 'inc/constants.php';
+
 	$json = $_SERVER['HTTP_JSON'];
 	
 	if(!isset($json)){
@@ -64,7 +66,7 @@
  
 		$headers = array(
 			'delay_while_idle' => true,
-			'Authorization: key=' . API_ACCESS_KEY,
+			'Authorization: key=' . GCM_API_ACCESS_KEY,
 			'Content-Type: application/json'
 		);
  

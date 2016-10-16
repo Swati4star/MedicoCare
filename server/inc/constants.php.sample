@@ -1,0 +1,3 @@
+<?php
+
+	define('GCM_API_ACCESS_KEY', 'XXXX');

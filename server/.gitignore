@@ -1,2 +1,4 @@
 # database connection file
 connection.inc.php
+
+constants.php
